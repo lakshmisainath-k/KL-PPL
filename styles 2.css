@@ -1,0 +1,146 @@
+:root{
+  --bg:#0f0f10;
+  --card:#161618;
+  --muted:#a6a6ad;
+  --text:#f1f1f4;
+  --accent:#3cb4ff;
+  --danger:#ff5c7a;
+  --border:#2a2a2d;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{color:var(--accent);text-decoration:none}
+.topbar{
+  position:sticky;top:0;z-index:10;
+  background:rgba(15,15,16,.9);
+  backdrop-filter:saturate(160%) blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:14px 14px 10px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--card);display:grid;place-items:center;box-shadow:var(--shadow)}
+.title{font-weight:800;letter-spacing:.2px}
+.subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+.tabs{
+  position:sticky;top:68px;z-index:9;
+  display:flex;gap:6px;overflow:auto;
+  padding:10px 10px 8px;
+  border-bottom:1px solid var(--border);
+  background:rgba(15,15,16,.85);
+  backdrop-filter:saturate(160%) blur(18px);
+}
+.tab{
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:999px;
+  white-space:nowrap;
+  font-weight:700;
+  opacity:.75;
+}
+.tab.active{opacity:1;border-color:rgba(60,180,255,.35)}
+.container{padding:12px 12px 30px;max-width:900px;margin:0 auto}
+.panel{display:none}
+.panel.active{display:block}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+}
+.h1{font-size:18px;font-weight:900}
+.h2{font-size:14px;font-weight:900;margin:0 0 6px}
+.muted{color:var(--muted);font-size:13px}
+.small{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+label span{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+select,input{
+  width:100%;
+  background:#101012;
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:10px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.btn{
+  background:var(--accent);
+  color:#00121a;
+  border:none;
+  padding:10px 12px;
+  border-radius:12px;
+  font-weight:900;
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+.btn.danger{background:var(--danger);color:#1b0008}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border);
+  padding:8px 10px;border-radius:999px;
+  color:var(--muted);font-size:12px;
+}
+.exercise{
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:10px;
+}
+.exercise-head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.exercise-title{font-weight:900}
+.exercise-sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{
+  font-size:12px;color:var(--muted);
+  border:1px solid var(--border);
+  padding:6px 8px;border-radius:999px;
+}
+.kpi{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.kpi input{
+  width:110px;
+}
+.kpi .mini{
+  width:90px;
+}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+hr.sep{border:none;border-top:1px solid var(--border);margin:12px 0}
+.toast{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:16px;z-index:999;
+  background:#0b0b0c;border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 12px;border-radius:12px;
+  box-shadow:var(--shadow);
+  max-width:min(520px,calc(100vw - 24px));
+}
+.timer{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);
+  display:grid;place-items:center;z-index:1000;padding:16px;
+}
+.timer-card{
+  width:min(520px,100%);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.timer-time{
+  font-size:44px;
+  font-weight:1000;
+  text-align:center;
+  margin:14px 0;
+}
+.filebtn{cursor:pointer;position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
