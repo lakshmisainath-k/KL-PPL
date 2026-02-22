@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>PPL Tracker</title>
+  <meta name="theme-color" content="#121212" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🏋️</div>
+      <div>
+        <div class="title">PPL Tracker</div>
+        <div class="subtitle" id="subtitle">Program • Videos • Tracking</div>
+      </div>
+    </div>
+    <button class="btn ghost" id="installBtn" hidden>Install</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="today">Today</button>
+    <button class="tab" data-tab="program">Program</button>
+    <button class="tab" data-tab="log">Log</button>
+    <button class="tab" data-tab="prs">PRs</button>
+    <button class="tab" data-tab="settings">Settings</button>
+  </nav>
+
+  <main class="container">
+    <section class="panel active" id="tab-today">
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="h1" id="todayTitle">Today</div>
+            <div class="muted" id="todayMeta"></div>
+          </div>
+          <div class="row">
+            <button class="btn" id="startWorkoutBtn">Start</button>
+            <button class="btn ghost" id="markDoneBtn">Mark Day Done</button>
+          </div>
+        </div>
+      </div>
+      <div id="todayExercises"></div>
+    </section>
+
+    <section class="panel" id="tab-program">
+      <div class="card">
+        <div class="grid">
+          <label>
+            <span>Phase</span>
+            <select id="phaseSelect"></select>
+          </label>
+          <label>
+            <span>Week</span>
+            <select id="weekSelect"></select>
+          </label>
+          <label>
+            <span>Day</span>
+            <select id="daySelect"></select>
+          </label>
+        </div>
+      </div>
+      <div id="programExercises"></div>
+    </section>
+
+    <section class="panel" id="tab-log">
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="h1">Workout Log</div>
+            <div class="muted">Your saved workouts live only on this device (local storage).</div>
+          </div>
+          <button class="btn danger ghost" id="clearLogBtn">Clear All</button>
+        </div>
+      </div>
+      <div id="logList"></div>
+    </section>
+
+    <section class="panel" id="tab-prs">
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="h1">PRs</div>
+            <div class="muted">Best sets tracked from your logs.</div>
+          </div>
+          <button class="btn ghost" id="recalcPrBtn">Recalculate</button>
+        </div>
+      </div>
+      <div id="prList"></div>
+    </section>
+
+    <section class="panel" id="tab-settings">
+      <div class="card">
+        <div class="h1">Settings</div>
+        <div class="grid">
+          <label>
+            <span>Cycle start date</span>
+            <input type="date" id="startDate" />
+          </label>
+          <label>
+            <span>Rest timer sound</span>
+            <select id="soundSelect">
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select>
+          </label>
+          <label>
+            <span>Units</span>
+            <select id="unitSelect">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" id="saveSettingsBtn">Save</button>
+          <button class="btn ghost" id="exportBtn">Export data</button>
+          <label class="btn ghost filebtn">
+            Import
+            <input type="file" id="importFile" accept="application/json" />
+          </label>
+        </div>
+        <p class="muted small">
+          Tip (iPhone): open in Safari → Share → <b>Add to Home Screen</b> to use it like an app.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="h2">Offline mode</div>
+        <p class="muted small">If you install it to Home Screen, it can work offline after first load.</p>
+        <div class="row">
+          <div class="pill" id="swStatus">Service worker: …</div>
+          <button class="btn ghost" id="swUpdateBtn">Check updates</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <div class="timer" id="timer" hidden>
+    <div class="timer-card">
+      <div class="row">
+        <div>
+          <div class="h2">Rest Timer</div>
+          <div class="muted" id="timerLabel"></div>
+        </div>
+        <button class="btn ghost" id="timerClose">Close</button>
+      </div>
+      <div class="timer-time" id="timerTime">00:00</div>
+      <div class="row">
+        <button class="btn ghost" id="timerMinus">-10s</button>
+        <button class="btn" id="timerStartPause">Start</button>
+        <button class="btn ghost" id="timerPlus">+10s</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
